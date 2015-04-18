@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+	<div id="bigDiv" style="position:relative;">
+		<div id="boxDiv" style="background-color:blue;width:200px;height:150px;position:absolute;left:100px;"></div>
+	</div>
+	<script>
+		var box = document.getElementById("boxDiv");
+		var limit = 500;
+		function moveBox(that)	{
+			that.style.left + 100 + "px";
+		}
+		alert("Check this out");
+		moveBox(document.getElementById('boxDiv'));
+	</script>
+</body>
+</html>

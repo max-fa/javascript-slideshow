@@ -1,0 +1,75 @@
+/*This is so I can press ctrl-S instead of the save button*/
+/*		var a = performance.now();
+		alert('do something...');
+		var b = performance.now();
+		alert('It took ' + (b - a) + ' ms.');*/
+
+body	{
+	margin: 0;
+}
+
+#bigbox	{
+	border: 1px solid black;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+.slidingBox	{
+	height: 100px;
+	width: 100px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#forwardButton	{
+	position: absolute;
+	top: 110px;
+}
+
+#box1	{
+	background-color: blue;
+	/*display: none;*/
+	position: relative;
+}
+
+#hello	{
+	background-color: brown;
+	display: none;
+	position: relative;
+}
+
+#box2	{
+	background-color: red;
+	display: none;
+	position: relative;
+}
+
+#box3	{
+	background-color: green;
+	display: none;
+	position: relative;
+}
+
+#box4	{
+	background-color: yellow;
+	display: none;
+	position: relative;
+}
+
+#box5	{
+	background-color: purple;
+	display: none;
+	position: relative;
+}
+
+#box6	{
+	background-color: violet;
+	display: none;
+	position: relative;
+}
+
+#headerGroup	{
+	
+}
