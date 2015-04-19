@@ -1,4 +1,3 @@
-<pre>
 window.onload = function()	{
 	//This is the start of the slideshow code.
 		var boxArray = [document.getElementById('box1'),document.getElementById('box2'),document.getElementById('box3'),document.getElementById('box4'),document.getElementById('box5'),document.getElementById('box6')];
@@ -36,32 +35,43 @@ window.onload = function()	{
 			} else	{
 				nextBox = 0;
 			};
-		}//THis is the end of the findNext function.
+		}
 		
 
 
-		//These are my observations on the slidewhow code on the next two lines
-		 //0,1,click,hide,show,check 1,2,click,hide,show,check 2,3,click,hide,show,check 3,4,click,hide,show,check <-- yellow and purple  4,5
-		//currentBox now equals 0,but with purple currently showing it ignores the purple and hides an already-hidden blue and skips to red next time I click it
+//These are my observations on the slidewhow code on the next two lines
+//0,1,click,hide,show,check 1,2,click,hide,show,check 2,3,click,hide,show,check 3,4,click,hide,show,check <-- yellow and purple  4,5
+//currentBox now equals 0,but with purple currently showing it ignores the purple and hides an already-hidden blue and skips to red next time I click it
 			
 //End: Targeting section of code
-		var forValue = 0;
-		var limit = 450;
-		var boxLeft = boxArray[currentBox].style.left;
-		
-		function moveRight()	{
-			document.getElementById('box1').style.left + '1px';
-		}
-		
-		var backButton = document.getElementById("backButton");
-		var forwardButton = document.getElementById("forwardButton");
-		
-		forwardButton.onclick = function()	{
-			setInterval(moveRight,500);
-		}
+	var limit = 450;	
+	var leftProperty = 10;
+	var boxToMove = boxArray[currentBox];
+	//This is the variable for the setInterval for moving right
+	var rightInterval;
+	
+	//This function moves the box right.
+	function moveRight()	{
+		boxArray[currentBox].style.left = leftProperty +  "px";
+	}
+	
+	//This is the clearInterval for the moveRight function
+	function stopRight()	{
+		window.clearInterval(rightInterval);
+		alert("It stopped.");
+	}
+	
+	//This is the onclick function for going forwards	
+	document.getElementById('forwardButton').onclick = function()	{
+		rightInterval = window.setInterval(function()	{
+			moveRight();
+			leftProperty++;
+			console.log("Hello World!");
+		},1);
+		var rightStopper = window.setTimeout(stopRight,5000);
+	}
 		
 //This is the end of the slideshow code.
-</pre>
 
 
 
