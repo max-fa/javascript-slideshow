@@ -19,8 +19,7 @@ body	{
 .slidingBox	{
 	height: 100px;
 	width: 100px;
-	margin-right: auto;
-	margin-left: auto;
+	display: inline-block;
 }
 
 #forwardButton	{
@@ -31,6 +30,7 @@ body	{
 #box1	{
 	background-color: blue;
 	position: relative;
+	left: 351px;
 }
 
 #hello	{
@@ -41,32 +41,32 @@ body	{
 
 #box2	{
 	background-color: red;
-	display: none;
 	position: relative;
+	left: -700px;
 }
 
 #box3	{
 	background-color: green;
-	display: none;
 	position: relative;
+	left: -700px;
 }
 
 #box4	{
 	background-color: yellow;
-	display: none;
 	position: relative;
+	left: -700px;
 }
 
 #box5	{
 	background-color: purple;
-	display: none;
 	position: relative;
+	left: -700px;
 }
 
 #box6	{
 	background-color: violet;
-	display: none;
 	position: relative;
+	left: -700px;
 }
 
 #headerGroup	{
