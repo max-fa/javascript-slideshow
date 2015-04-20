@@ -45,14 +45,16 @@ window.onload = function()	{
 			
 //End: Targeting section of code
 	var limit = 450;	
-	var leftProperty = 10;
-	var boxToMove = boxArray[currentBox];
+	var leftProperty = 351;
 	//This is the variable for the setInterval for moving right
 	var rightInterval;
 	
 	//This function moves the box right.
 	function moveRight()	{
 		boxArray[currentBox].style.left = leftProperty +  "px";
+		if(boxArray[currentBox].style.left >= 850 + "px")	{
+			stopRight();
+		};
 	}
 	
 	//This is the clearInterval for the moveRight function
@@ -66,9 +68,8 @@ window.onload = function()	{
 		rightInterval = window.setInterval(function()	{
 			moveRight();
 			leftProperty++;
-			console.log("Hello World!");
 		},1);
-		var rightStopper = window.setTimeout(stopRight,5000);
+		//var rightStopper = window.setTimeout(stopRight,5000);
 	}
 		
 //This is the end of the slideshow code.
