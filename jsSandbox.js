@@ -12,32 +12,50 @@ window.onload = function()	{
 		//nextBox is the box to be displayed after currentBox.	
 		var nextBox = 1;
 		
-		//rightInterval is the variable where I will store the timer for moving the currently-displayed colored box to the right.
-		//rightInterval is declared globally so the clearInterval in the stopRight function can see it.		
-		var rightInterval;
+		//rightInterval1 is the variable where I will store the timer for moving the currently-displayed colored box to the right.
+		//rightInterval1 is declared globally so the clearInterval in the stopRight1 function can see it.		
+		var rightInterval1;
 		
-		//leftProperty is where I store the value I want to attach to currentBox's style.left property.
-		var leftProperty = 351;
+		//rightInterval2 is the variable where I will store the timer for moving the nextBox colored box to the right.
+		var rightInterval2;
 		
-		//endHere is the variable that stores the number which equates to the left value that I want to attach to the colored boxes moving right.
-		var endHere = 801;
+		//leftProperty1 is where I store the value I want to attach to currentBox's style.left property.
+		var leftProperty1 = 351;
+		
+		//leftProperty2 is where I store the value I want to attach to nextBox's style.left property.
+		var leftProperty2 = -700;
+		
+		//endHere1 is the variable that stores the number which equates to the left value that I want to attach to the currentBox when it moves right.
+		var endHere1 = 801;
+		
+		//endHere12 is the variable that stores the numberr which equates to the left value that I want to attach to the nextBox when it moves right.
+		var endHere2 = 351;
 		
 		//This hides the current box
-		function hideBox()	{
-			boxArray[currentBox].style.left = leftProperty +  "px";
-			if(boxArray[currentBox].style.left >= endHere + "px")	{
-				stopRight();
+		/*function hideBox()	{
+			boxArray[currentBox].style.left = leftProperty1 +  "px";
+			if(boxArray[currentBox].style.left >= endHere1 + "px")	{
+				stopRight1();
 				boxArray[currentBox].style.left = -700 + "px";
 			};
-		}
+		}*/
+		
 		//This shows the next box
 		function showBox(box)	{
-			boxArray[nextBox].style.display
+			boxArray[nextBox].style.left = leftProperty2 +  "px";
+			if(boxArray[nextBox].style.left >= endHere2 + "px")	{
+				stopRight2();
+			};
 		}
 		
-		//This is the clearInterval for the moveRight function
-		function stopRight()	{
-			window.clearInterval(rightInterval);
+		//This is the clearInterval for the hideBox function
+		function stopRight1()	{
+			window.clearInterval(rightInterval1);
+		}
+		
+		//This is the clearInterval for the showBox function
+		function stopRight2()	{
+			window.clearInterval(rightInterval2);
 		}
 		
 		//This one combines the two functions for hiding and showing boxes
@@ -73,10 +91,15 @@ window.onload = function()	{
 	
 	//This is the onclick function for going forwards	
 	document.getElementById('forwardButton').onclick = function()	{
-		rightInterval = window.setInterval(function()	{
+		rightInterval1 = window.setInterval(function()	{
 			hideBox();
-			leftProperty++;
+			leftProperty1++;
 		},1);
+		
+		rightInterval2 = window.setInterval(function()	{
+			showBox();
+			leftProperty2++;
+		},1)
 	}
 		
 //This is the end of the slideshow code.
