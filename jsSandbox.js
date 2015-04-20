@@ -4,8 +4,6 @@ window.onload = function()	{
 		//boxArray is where I store all the ids for the colored boxes
 		var boxArray = [document.getElementById('box1'),document.getElementById('box2'),document.getElementById('box3'),document.getElementById('box4'),document.getElementById('box5'),document.getElementById('box6')];
 		
-		
-
 		//currentBox is the currently-displayed colored box
 		var currentBox = 0;
 		
@@ -16,46 +14,28 @@ window.onload = function()	{
 		//rightInterval1 is declared globally so the clearInterval in the stopRight1 function can see it.		
 		var rightInterval1;
 		
-		//rightInterval2 is the variable where I will store the timer for moving the nextBox colored box to the right.
-		var rightInterval2;
-		
 		//leftProperty1 is where I store the value I want to attach to currentBox's style.left property.
 		var leftProperty1 = 351;
-		
-		//leftProperty2 is where I store the value I want to attach to nextBox's style.left property.
-		var leftProperty2 = -700;
 		
 		//endHere1 is the variable that stores the number which equates to the left value that I want to attach to the currentBox when it moves right.
 		var endHere1 = 801;
 		
-		//endHere12 is the variable that stores the numberr which equates to the left value that I want to attach to the nextBox when it moves right.
-		var endHere2 = 351;
-		
 		//This hides the current box
-		/*function hideBox()	{
+		function hideBox()	{
 			boxArray[currentBox].style.left = leftProperty1 +  "px";
 			if(boxArray[currentBox].style.left >= endHere1 + "px")	{
 				stopRight1();
-				boxArray[currentBox].style.left = -700 + "px";
+				//boxArray[currentBox].style.left = -700 + "px";
 			};
-		}*/
+		}
 		
 		//This shows the next box
 		function showBox(box)	{
-			boxArray[nextBox].style.left = leftProperty2 +  "px";
-			if(boxArray[nextBox].style.left >= endHere2 + "px")	{
-				stopRight2();
-			};
 		}
 		
 		//This is the clearInterval for the hideBox function
 		function stopRight1()	{
 			window.clearInterval(rightInterval1);
-		}
-		
-		//This is the clearInterval for the showBox function
-		function stopRight2()	{
-			window.clearInterval(rightInterval2);
 		}
 		
 		//This one combines the two functions for hiding and showing boxes
@@ -95,11 +75,6 @@ window.onload = function()	{
 			hideBox();
 			leftProperty1++;
 		},1);
-		
-		rightInterval2 = window.setInterval(function()	{
-			showBox();
-			leftProperty2++;
-		},1)
 	}
 		
 //This is the end of the slideshow code.
