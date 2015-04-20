@@ -1,19 +1,45 @@
 window.onload = function()	{
-	//This is the start of the slideshow code.
+		//This is the start of the slideshow code.
+		
+		//boxArray is where I store all the ids for the colored boxes
 		var boxArray = [document.getElementById('box1'),document.getElementById('box2'),document.getElementById('box3'),document.getElementById('box4'),document.getElementById('box5'),document.getElementById('box6')];
 		
-	
-//Start: Targeting section of code,currentBox is the current box while nextBox is pretty self-explanatory.	
+		
+
+		//currentBox is the currently-displayed colored box
 		var currentBox = 0;
+		
+		//nextBox is the box to be displayed after currentBox.	
 		var nextBox = 1;
+		
+		//rightInterval is the variable where I will store the timer for moving the currently-displayed colored box to the right.
+		//rightInterval is declared globally so the clearInterval in the stopRight function can see it.		
+		var rightInterval;
+		
+		//leftProperty is where I store the value I want to attach to currentBox's style.left property.
+		var leftProperty = 351;
+		
+		//endHere is the variable that stores the number which equates to the left value that I want to attach to the colored boxes moving right.
+		var endHere = 801;
+		
 		//This hides the current box
-		function hideBox(box)	{
-			box.style.display = "none";
+		function hideBox()	{
+			boxArray[currentBox].style.left = leftProperty +  "px";
+			if(boxArray[currentBox].style.left >= endHere + "px")	{
+				stopRight();
+				boxArray[currentBox].style.left = -700 + "px";
+			};
 		}
 		//This shows the next box
 		function showBox(box)	{
-			box.style.display = "block";
+			boxArray[nextBox].style.display
 		}
+		
+		//This is the clearInterval for the moveRight function
+		function stopRight()	{
+			window.clearInterval(rightInterval);
+		}
+		
 		//This one combines the two functions for hiding and showing boxes
 		function moveAlong()	{
 			hideBox(boxArray[currentBox]);
@@ -41,35 +67,16 @@ window.onload = function()	{
 
 //These are my observations on the slidewhow code on the next two lines
 //0,1,click,hide,show,check 1,2,click,hide,show,check 2,3,click,hide,show,check 3,4,click,hide,show,check <-- yellow and purple  4,5
-//currentBox now equals 0,but with purple currently showing it ignores the purple and hides an already-hidden blue and skips to red next time I click it
+//currentBox now equals 0,but with purple currently showing,it ignores the purple and hides an already-hidden blue and skips to red next time I click it
 			
 //End: Targeting section of code
-	var limit = 450;	
-	var leftProperty = 351;
-	//This is the variable for the setInterval for moving right
-	var rightInterval;
-	
-	//This function moves the box right.
-	function moveRight()	{
-		boxArray[currentBox].style.left = leftProperty +  "px";
-		if(boxArray[currentBox].style.left >= 850 + "px")	{
-			stopRight();
-		};
-	}
-	
-	//This is the clearInterval for the moveRight function
-	function stopRight()	{
-		window.clearInterval(rightInterval);
-		alert("It stopped.");
-	}
 	
 	//This is the onclick function for going forwards	
 	document.getElementById('forwardButton').onclick = function()	{
 		rightInterval = window.setInterval(function()	{
-			moveRight();
+			hideBox();
 			leftProperty++;
 		},1);
-		//var rightStopper = window.setTimeout(stopRight,5000);
 	}
 		
 //This is the end of the slideshow code.
