@@ -1,6 +1,19 @@
 window.onload = function()	{
 		//This is the start of the slideshow code.
 		
+	//This is the onclick function for going forwards	
+	document.getElementById('forwardButton').onclick = function()	{
+		rightInterval = window.setInterval(function()	{
+			hideBox();
+			leftProperty++;
+		},1);
+		
+		rightIntervalTwo = window.setInterval(function()	{
+			showBox();
+			leftPropertyTwo++;
+		},1);
+	}	
+		
 		//boxArray is where I store all the ids for the colored boxes
 		var boxArray = [document.getElementById('box1'),document.getElementById('box2'),document.getElementById('box3'),document.getElementById('box4'),document.getElementById('box5'),document.getElementById('box6')];
 		
@@ -8,36 +21,31 @@ window.onload = function()	{
 		var currentBox = 0;
 		var nextBox = 1;
 		
-		//Start: Variables for the hideBox function.
-		//rightInterval is the variable where I will store the timer for moving the currently-displayed colored box to the right.	
-		var rightInterval;
 		
-		//leftProperty is where I store the value I want to attach to currentBox's style.left property.
-		var leftProperty = 351;
+
 		
-		//endHere is the variable that stores the number which equates to the left value that I want to attach to the colored boxes moving right.
+		
+		//endHere is the variable that stores the number which equates to the left value that I want to attach to the currentBox,endHereTwo does the same for the nextBox.
 		var endHere = 801;
-		//End: Variables for the hideBox function
+		var endHereTwo =  251;
+		
+		//Start: Variables for the showBox function
+		//These are the variables to contain the setIntervals when I call them(rightInterval for the hideBox function,and righIntervalTwo for the showBox function.).
+		var rightInterval;
+		var rightIntervalTwo;
+		
+		//leftProperty is where I store the value I want to attach to currentBox's style.left property,leftProperty does the same for nextBox's style.left property.
+		var leftProperty = 351;
+		var leftPropertyTwo = -205;
 		
 		//This hides the current box
 		function hideBox()	{
 			boxArray[currentBox].style.left = leftProperty +  "px";
 			if(boxArray[currentBox].style.left === endHere + "px")	{
 				stopRight();
-				boxArray[currentBox].style.left = -700 + "px";
+				boxArray[currentBox].style.left = -101 + "px";
 			};
 		}
-		
-		//Start: Variables for the showBox function
-		//rightIntervalTwo is the showBox equivalent of the rightInterval variable above(see line 15).
-		var rightIntervalTwo;
-		
-		// leftPropertyTwo is the showBox equivalent of the leftProperty variable above(see line 18).
-		var leftPropertyTwo = -700;
-		
-		//endHereTwo is the showBox equivalent of the  endHere variable above(see line 21).
-		var endHereTwo =  251;
-		//End: Variables for the showBox.
 		
 		//This shows the next box
 		function showBox(box)	{
@@ -59,8 +67,8 @@ window.onload = function()	{
 		
 		//This one combines the two functions for hiding and showing boxes
 		function moveAlong()	{
-			hideBox(boxArray[currentBox]);
-			showBox(boxArray[nextBox]);
+			hideBox();
+			showBox();
 		}
 		//This adds to the 'current' box and the 'next' box counters.
 		function findNext()	{
@@ -80,18 +88,7 @@ window.onload = function()	{
 			};
 		}
 	
-	//This is the onclick function for going forwards	
-	document.getElementById('forwardButton').onclick = function()	{
-		rightInterval = window.setInterval(function()	{
-			hideBox();
-			leftProperty++;
-		},1);
-		
-		rightIntervalTwo = window.setInterval(function()	{
-			showBox();
-			leftPropertyTwo++;
-		},1);
-	}	
+
 
 
 //These are my observations on the slidewhow code on the next two lines
