@@ -7,7 +7,6 @@ window.onload = function()	{
 			hideBox();
 			leftProperty++;
 		},1);
-		
 		rightIntervalTwo = window.setInterval(function()	{
 			showBox();
 			leftPropertyTwo++;
@@ -24,7 +23,7 @@ window.onload = function()	{
 		
 
 		
-		
+		var whenToUpdate;
 		//endHere is the variable that stores the number which equates to the left value that I want to attach to the currentBox,endHereTwo does the same for the nextBox.
 		var endHere = 801;
 		var endHereTwo =  251;
@@ -40,15 +39,14 @@ window.onload = function()	{
 		
 		//This hides the current box
 		function hideBox()	{
-			boxArray[currentBox].style.left = leftProperty +  "px";
+			boxArray[currentBox].style.left = leftProperty + "px";
 			if(boxArray[currentBox].style.left === endHere + "px")	{
 				stopRight();
-				boxArray[currentBox].style.left = -101 + "px";
 			};
 		}
 		
 		//This shows the next box
-		function showBox(box)	{
+		function showBox()	{
 			boxArray[nextBox].style.left = leftPropertyTwo + "px";
 			if(boxArray[nextBox].style.left === endHereTwo + "px")	{
 				stopRightTwo();
@@ -58,11 +56,16 @@ window.onload = function()	{
 		//This is the clearInterval for the hideBox function
 		function stopRight()	{
 			window.clearInterval(rightInterval);
+			whenToUpdate = true;
 		}
 		
 		//This is the clearInterval for the showBox function.
 		function stopRightTwo()	{
 			window.clearInterval(rightIntervalTwo);
+			whenToUpdate = true;
+			if(whenToUpdate === true)	{
+				findNext();
+			}
 		}
 		
 		//This one combines the two functions for hiding and showing boxes
@@ -86,6 +89,7 @@ window.onload = function()	{
 			} else	{
 				nextBox = 0;
 			};
+			whenToUpdate = false;
 		}
 	
 
