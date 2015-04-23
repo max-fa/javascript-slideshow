@@ -6,10 +6,12 @@ window.onload = function()	{
 		rightInterval = window.setInterval(function()	{
 			hideBox();
 			leftProperty++;
+			endHere++;
 		},1);
 		rightIntervalTwo = window.setInterval(function()	{
 			showBox();
 			leftPropertyTwo++;
+			endHereTwo++;
 		},1);
 	}	
 		
@@ -19,14 +21,14 @@ window.onload = function()	{
 		//currentBox is the currently-displayed colored box,and nextBox is the box to be displayed after currentBox.
 		var currentBox = 0;
 		var nextBox = 1;
-		
-		
-
+		//THe following two count the distance from spot to spot.
+		var calcLength = 449;//Center to right
+		var calcLengthTwo = 456;//Left to center
 		
 		var whenToUpdate;
 		//endHere is the variable that stores the number which equates to the left value that I want to attach to the currentBox,endHereTwo does the same for the nextBox.
-		var endHere = 801;
-		var endHereTwo =  251;
+		var endHere = 0;//446
+		var endHereTwo = 0;//456
 		
 		//Start: Variables for the showBox function
 		//These are the variables to contain the setIntervals when I call them(rightInterval for the hideBox function,and righIntervalTwo for the showBox function.).
@@ -34,22 +36,30 @@ window.onload = function()	{
 		var rightIntervalTwo;
 		
 		//leftProperty is where I store the value I want to attach to currentBox's style.left property,leftProperty does the same for nextBox's style.left property.
-		var leftProperty = 351;
+		var leftProperty = 355;
 		var leftPropertyTwo = -205;
+		
+		var one = 0;
+		var two = document.getElementById('box1');
+		var three = one + two;
+		alert(three);
 		
 		//This hides the current box
 		function hideBox()	{
 			boxArray[currentBox].style.left = leftProperty + "px";
-			if(boxArray[currentBox].style.left === endHere + "px")	{
+			if(endHere == 446)	{
 				stopRight();
+				boxArray[currentBox].style.left = -101 + "px";
+				endHere = 0;
 			};
 		}
 		
 		//This shows the next box
 		function showBox()	{
 			boxArray[nextBox].style.left = leftPropertyTwo + "px";
-			if(boxArray[nextBox].style.left === endHereTwo + "px")	{
+			if(endHereTwo == 456)	{
 				stopRightTwo();
+				endHereTwo = 0;
 			};
 		}
 		
@@ -63,9 +73,6 @@ window.onload = function()	{
 		function stopRightTwo()	{
 			window.clearInterval(rightIntervalTwo);
 			whenToUpdate = true;
-			if(whenToUpdate === true)	{
-				findNext();
-			}
 		}
 		
 		//This one combines the two functions for hiding and showing boxes
