@@ -21,11 +21,10 @@ window.onload = function()	{
 		//currentBox is the currently-displayed colored box,and nextBox is the box to be displayed after currentBox.
 		var currentBox = 0;
 		var nextBox = 1;
-		//THe following two count the distance from spot to spot.
+		//The following two count the distance from spot to spot.
 		var calcLength = 449;//Center to right
 		var calcLengthTwo = 456;//Left to center
 		
-		var whenToUpdate;
 		//endHere is the variable that stores the number which equates to the left value that I want to attach to the currentBox,endHereTwo does the same for the nextBox.
 		var endHere = 0;//446
 		var endHereTwo = 0;//456
@@ -39,10 +38,6 @@ window.onload = function()	{
 		var leftProperty = 355;
 		var leftPropertyTwo = -205;
 		
-		var one = 0;
-		var two = document.getElementById('box1');
-		var three = one + two;
-		alert(three);
 		
 		//This hides the current box
 		function hideBox()	{
@@ -54,20 +49,23 @@ window.onload = function()	{
 			};
 		}
 		
+		
 		//This shows the next box
 		function showBox()	{
 			boxArray[nextBox].style.left = leftPropertyTwo + "px";
 			if(endHereTwo == 456)	{
 				stopRightTwo();
 				endHereTwo = 0;
+				findNext();
 			};
 		}
+		
 		
 		//This is the clearInterval for the hideBox function
 		function stopRight()	{
 			window.clearInterval(rightInterval);
-			whenToUpdate = true;
 		}
+		
 		
 		//This is the clearInterval for the showBox function.
 		function stopRightTwo()	{
@@ -75,12 +73,8 @@ window.onload = function()	{
 			whenToUpdate = true;
 		}
 		
-		//This one combines the two functions for hiding and showing boxes
-		function moveAlong()	{
-			hideBox();
-			showBox();
-		}
-		//This adds to the 'current' box and the 'next' box counters.
+		
+		//This adds to the 'current' box and the 'next' box counters to find the next two boxes to move.
 		function findNext()	{
 		//currentBox takes an initial value of zero and keeps on increasing it 'till it reaches 4,it then restarts to zero where it will hide the blue box as its one-ahead friend nextBox show red 
 			if (currentBox < boxArray.length - 1)	{ 
@@ -96,7 +90,6 @@ window.onload = function()	{
 			} else	{
 				nextBox = 0;
 			};
-			whenToUpdate = false;
 		}
 	
 
