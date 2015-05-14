@@ -13,7 +13,9 @@ window.onload = function()	{
 	var currentBox = 0;
 	var nextBox = 1;
 	
-	var leftOne = 355;
+	var getLeft = window.getComputedStyle(boxArray[currentBox],null).getPropertyValue("left");
+	console.log(getLeft);
+	var leftOne = parseInt(getLeft);
 	
 	function someThing()	{
 		function stop()	{
@@ -21,9 +23,7 @@ window.onload = function()	{
 			counter = 0;
 		}
 		
-		
 		var counter = 0;
-		
 		
 		var firstInterval = window.setInterval(function()	{
 			boxArray[currentBox].style.left = leftOne + "px";
