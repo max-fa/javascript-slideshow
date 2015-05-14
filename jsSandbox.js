@@ -26,7 +26,6 @@ window.onload = function()	{
 			clearInterval(firstInterval);
 			counter1 = 0;
 			leftOne = 0;
-			findNext();
 		}
 		
 		var firstInterval = window.setInterval(function()	{
@@ -41,6 +40,24 @@ window.onload = function()	{
 		
 		//Start: part of function for moving nextBox right
 		var getLeft2 = window.getComputedStyle(boxArray[nextBox],null).getPropertyValue("left");
+		var leftTwo = parseInt(getLeft2);
+		var counter2 = 0;
+		
+		function stop2()	{
+			clearInterval(secondInterval);
+			counter2 = 0;
+			leftTwo = 0;
+			findNext();
+		}
+		
+		var secondInterval = window.setInterval(function()	{
+			boxArray[nextBox].style.left = leftTwo + "px";
+			leftTwo++;
+			counter2++;
+			if (counter2 == 456)	{
+				stop2();
+			}
+		},1);
 		
 		//End: part of function for moving nextBox right
 		
