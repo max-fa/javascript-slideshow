@@ -18,13 +18,17 @@ window.onload = function()	{
 	//it does that until it reaches a limit(the absolute amount of pixels it takes to traverse the space from center to right,calculated by counter variable)and calls the stop function.
 	function moveRight()	{
 		//Start: part of function for moving currentBox right.
+		
+		//getLeft1 gets the string version of the left property and leftOne turns it into an integer to be manipulated and applied.
 		var getLeft1 = window.getComputedStyle(boxArray[currentBox],null).getPropertyValue("left");
 		var leftOne = parseInt(getLeft1);
 		var counter1 = 0;
 		
+		//stops setInterval,resets counter,resets imitation left property
 		function stop1()	{
 			clearInterval(firstInterval);
 			counter1 = 0;
+			boxArray[currentBox].style.left = leftOne - 902 + "px";
 			leftOne = 0;
 		}
 		
@@ -39,6 +43,8 @@ window.onload = function()	{
 		//End: part of function for moving currentBox right
 		
 		//Start: part of function for moving nextBox right
+		
+		//getLeft2 gets the string version of the left property and leftTwo turns it into an integer to be manipulated and applied..
 		var getLeft2 = window.getComputedStyle(boxArray[nextBox],null).getPropertyValue("left");
 		var leftTwo = parseInt(getLeft2);
 		var counter2 = 0;
