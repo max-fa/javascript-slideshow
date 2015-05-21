@@ -10,19 +10,19 @@ window.onload = function()	{
 	
 
 	
-	document.getElementById('forwardButton').onclick = function()	{
+	document.getElementById('forwardButton').onclick = function(e)	{
 		if (readyToGo == true)	{
 			readyToGo = false;
 			moveRight();
 		}	else	{
-			stopMoveRight();
+			e.preventDefault();
 		}
 		
 	}
 	
-	function stopMoveRight(elem)	{
+	/*function stopMoveRight(elem)	{
 		elem.preventDefault();
-	}
+	}*/
 	
 	//stop1 and stop is the function to clear the setInterval that I'm using.firstInterval repeatedly adds to the leftOne variable and appends its value to the left property of the box I want to move(currentBox)
 	//it does that until it reaches a limit(the absolute amount of pixels it takes to traverse the space from center to right,calculated by counter variable)and calls the stop function.
