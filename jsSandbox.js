@@ -6,12 +6,22 @@ window.onload = function()	{
 	
 	var currentBox = 0;
 	var nextBox = 1;
-
+	var readyToGo = true;
 	
 
 	
 	document.getElementById('forwardButton').onclick = function()	{
-		moveRight();
+		if (readyToGo == true)	{
+			readyToGo = false;
+			moveRight();
+		}	else	{
+			stopMoveRight();
+		}
+		
+	}
+	
+	function stopMoveRight(elem)	{
+		elem.preventDefault();
 	}
 	
 	//stop1 and stop is the function to clear the setInterval that I'm using.firstInterval repeatedly adds to the leftOne variable and appends its value to the left property of the box I want to move(currentBox)
@@ -53,6 +63,7 @@ window.onload = function()	{
 			clearInterval(secondInterval);
 			counter2 = 0;
 			leftTwo = 0;
+			readyToGo = true;
 			findNext();
 		}
 		
