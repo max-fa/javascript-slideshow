@@ -42,6 +42,7 @@ window.onload = function()	{
 			leftOne = 0;
 		}
 		
+		//This is where we actually move the box.
 		var firstInterval = window.setInterval(function()	{
 			boxArray[currentBox].style.left = leftOne + "px";
 			leftOne++;
